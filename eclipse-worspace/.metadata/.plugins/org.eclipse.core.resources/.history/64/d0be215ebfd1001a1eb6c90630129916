@@ -1,0 +1,46 @@
+package ArraysAndLists;
+
+import java.util.HashMap;
+
+public class LettersInString {
+	
+	public boolean differentLetters(String word) {
+		HashMap<Character, Integer> letters = 
+				new HashMap<Character, Integer>();
+		
+		word = word.toLowerCase();
+		char[] aWord = word.toCharArray();
+		letters.put(aWord[0], 1);
+		for (int k = 1; k < aWord.length; k++) {
+			if (letters.containsKey(aWord[k])) {
+				return false;
+			} else {
+				letters.put(aWord[k], 1);
+			}
+		}
+		return true;
+	}
+	
+	public void testing() {
+		String word = "house";
+		boolean result = differentLetters(word);
+		System.out.println(result + " = true.");
+		
+		String word1 = "Tree";
+		boolean result1 = differentLetters(word1);
+		System.out.println(result1 + " = false.");
+		
+		String word2 = "knowledge";
+		boolean result2 = differentLetters(word2);
+		System.out.println(result2 + " = false.");
+		
+		String word3 = "print";
+		boolean result3 = differentLetters(word3);
+		System.out.println(result3 + " = true.");
+	}
+	
+	public static void main(String[] args) {
+		LettersInString myLI = new LettersInString();
+		myLI.testing();
+	}
+}
